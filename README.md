@@ -1,8 +1,55 @@
-# VaidyaAI – Multilingual AI Symptom Checker
-### TN Impact Hackathon 2025 · Built for Tamil Nadu
+# 🩺 VaidyaAI
+### Multilingual AI Health Assistant for Early Symptom Guidance
 
-> **Voice-first AI healthcare assistant for rural and semi-urban Tamil Nadu.**
-> Speak symptoms in Tamil or English, get intelligent triage, find nearby hospitals.
+🚀 VaidyaAI is an AI-powered healthcare assistant designed to help users understand symptoms and receive preliminary guidance in their **native language**.
+
+The platform bridges the communication gap between patients and healthcare information, especially for **rural communities, travelers, and non-English speakers**.
+
+---
+
+# 🌍 The Problem
+
+Many people avoid visiting hospitals for minor symptoms, assuming they are not serious.
+
+However:
+
+• Small symptoms sometimes lead to major health issues.  
+• Illiterate or rural patients struggle to explain symptoms.  
+• Language barriers prevent clear communication with doctors.  
+
+This leads to **delayed diagnosis and poor healthcare access**.
+
+---
+
+# 💡 Our Solution
+
+**VaidyaAI** is an intelligent health assistant that:
+
+✔ Understands symptoms through conversational AI  
+✔ Supports multiple Indian languages  
+✔ Provides early health guidance  
+✔ Converts responses into natural voice output  
+
+It acts as a **first-level digital health companion**.
+
+---
+
+# ⚙️ Key Features
+
+🧠 **AI Symptom Analysis**  
+Analyzes user-described symptoms and provides guidance.
+
+🌐 **Multilingual Support**  
+Users can interact in multiple Indian languages.
+
+🔊 **Natural Voice Responses**  
+AI responses are converted into speech for accessibility.
+
+💬 **Conversational Interface**  
+Users can interact with the system like chatting with a healthcare assistant.
+
+🧑‍⚕️ **Guidance-Oriented Responses**  
+Instead of diagnosis, it provides safe medical guidance.
 
 ---
 
@@ -49,6 +96,26 @@ symptom-ai/
 
 ---
 
+# 🛠 Tech Stack
+
+### Frontend
+- React
+- JavaScript
+- HTML / CSS
+
+### Backend
+- FastAPI
+- Python
+
+### AI & APIs
+- Sambanova API (LLM)
+- Sarvam AI (Text-to-Speech)
+
+### Deployment
+- Render
+
+---
+
 ## ⚡ Quick Start
 
 ### Prerequisites
@@ -62,7 +129,7 @@ symptom-ai/
 
 ```bash
 git clone <repo-url>
-cd symptom-ai
+cd VaidyaAI
 ```
 
 ---
@@ -83,7 +150,7 @@ pip install -r requirements.txt
 
 # Configure API key
 cp .env.example .env
-# Edit .env and add your ANTHROPIC_API_KEY
+# Edit .env and add your SAMBANOVA_API_KEY
 
 # Run backend
 uvicorn main:app --reload --port 8000
@@ -113,145 +180,64 @@ npm run dev
 The app will be available at: http://localhost:5173
 
 ---
+# 🧪 Example Interaction
 
-### 4. Setting API Keys
+User:
 
-**Backend (`backend/.env`):**
-```env
-ANTHROPIC_API_KEY=sk-ant-api03-...
-```
 
-Get your key at: https://console.anthropic.com/settings/keys
+I have fever and body pain.
 
----
 
-## 🎤 Testing Voice Input
+AI Response:
 
-1. Open the app in **Google Chrome** (voice recognition works best in Chrome)
-2. Navigate to Symptom Checker
-3. Click the green microphone button
-4. Allow microphone access when prompted
-5. Speak your symptoms in English: *"I have a severe headache and fever"*
-6. Or switch to Tamil mode and speak: *"என் தலையில் வலி இருக்கிறது"*
-7. The text will auto-populate in the input field
-8. Press Enter or click Send
 
-**Voice Language Selection:**
-- Toggle between EN / தமிழ் in the top-right of the chat screen
-- EN uses `en-IN` locale
-- தமிழ் uses `ta-IN` locale
+Fever and body pain can be symptoms of infections like flu or viral fever.
+If the fever persists for more than 2 days, it is recommended to consult a doctor.
+Stay hydrated and take rest.
+
+
+Voice output is generated for accessibility.
 
 ---
 
-## 🌐 API Endpoints
+# 🎯 Impact
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | Health check |
-| POST | `/symptom_chat` | AI conversation turn |
-| POST | `/analyze` | Force structured analysis |
-| GET | `/hospitals?lat=&lon=&radius=` | Nearby hospitals (OSM) |
-| POST | `/summary` | Generate doctor summary |
+VaidyaAI can help:
 
-### Example: POST /symptom_chat
-```json
-{
-  "messages": [
-    {"role": "user", "content": "I have chest pain and shortness of breath"}
-  ]
-}
-```
+👨‍🌾 Rural populations  
+🧓 Elderly users  
+🌏 Travelers in different states  
+📚 People with low health literacy  
 
-### Example Response:
-```json
-{
-  "response": "I'm concerned about your symptoms. How long have you had the chest pain?...",
-  "is_analysis": false,
-  "analysis_data": null
-}
-```
+It improves **early health awareness and accessibility**.
 
 ---
 
-## 🗺️ Hospital Data
+# 🔮 Future Improvements
 
-Hospitals are fetched in real-time from **OpenStreetMap Overpass API** – no mock data.
-
-Query searches for:
-- `amenity=hospital`
-- `amenity=clinic`
-- `healthcare=hospital`
-- `healthcare=clinic`
-
-Within configurable radius (2km to 20km) around user's GPS location.
-
-Fallback: Rānipet, Tamil Nadu coordinates if GPS unavailable.
+• Integration with nearby hospital locator  
+• Medical dataset-based symptom classification  
+• Doctor consultation integration  
+• Health record storage  
+• Mobile application version
 
 ---
 
-## 🧠 AI Behavior
+# 👩‍💻 Author
 
-The AI is powered by Claude (Anthropic) with a specialized medical triage system prompt:
+**Diya Vinod**  
+AI & ML Student  
 
-1. **Greets in Tamil/English** based on user's input language
-2. **Asks 2-3 follow-up questions** per symptom cluster
-3. **Detects emergency red flags** immediately
-4. **After 3-4 exchanges**, generates structured JSON analysis
-5. **Never diagnoses** – always recommends specialist type
-
-**Emergency detection triggers:**
-- Chest pain + breathlessness
-- Stroke symptoms (face drooping, arm weakness)
-- Severe headache ("worst of life")
-- Loss of consciousness
-- Severe bleeding
+Passionate about building AI solutions that solve real-world problems.
 
 ---
 
-## 🎨 Design System
+# ⭐ If you like this project
 
-- **Primary**: Teal (#0d9488)
-- **Fonts**: Playfair Display (headings) + DM Sans (body)
-- **Cards**: White rounded-2xl with soft shadows
-- **Emergency**: Red with pulse animation
-- **Mobile first**: Responsive for smartphone users
-
----
-
-## 🏆 Three WOW Features
-
-### 1. Voice-First AI Interview
-- Web Speech API with Tamil (`ta-IN`) and English (`en-IN`) support
-- Live transcript shown while recording
-- Works offline for speech recognition, online for AI response
-
-### 2. Emergency Risk Detector
-- Real-time pattern matching in AI response
-- Red pulsing banner with `⚠ POSSIBLE MEDICAL EMERGENCY`
-- Direct link to call 108 (Tamil Nadu ambulance)
-- Auto-navigate to emergency hospitals
-
-### 3. Printable Doctor Summary Card
-- AI generates structured medical triage report
-- Includes: chief complaint, symptom list, duration, severity, Q&A log, specialist recommendation
-- Formatted for direct presentation to doctor
-- Print-optimized CSS (`@media print`)
-
----
-
-## 🔒 Privacy
-
-- No user accounts required
-- No data stored on server (stateless API)
-- Conversation exists only in browser memory
-- Phone number input is optional and not stored
+Give this repository a **star ⭐** and feel free to contribute!
 
 ---
 
 ## 🏥 Disclaimer
 
 VaidyaAI is a **medical triage assistant only**. It does not diagnose diseases and should not replace professional medical advice. Always consult a qualified healthcare provider for diagnosis and treatment.
-
----
-
-*Built with ❤️ for TN Impact Hackathon 2025 – Rānipet, Tamil Nadu*
