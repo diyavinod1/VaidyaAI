@@ -51,6 +51,12 @@ LANGUAGE_NAMES = {
     "ml": "Malayalam (മലയാളം)",
     "te": "Telugu (తెలుగు)",
     "kn": "Kannada (ಕನ್ನಡ)",
+    "fr": "French (Français)",
+    "de": "German (Deutsch)",
+    "zh": "Mandarin (中文)",
+    "ko": "Korean (한국어)",
+    "ja": "Japanese (日本語)",
+    "vi": "Vietnamese (Tiếng Việt)"
 }
 
 def build_system_prompt(language_code: str) -> str:
@@ -481,12 +487,20 @@ SARVAM_LANG_MAP = {
     "te": "te-IN",
     "ml": "ml-IN",
     "kn": "kn-IN",
+    "fr": "fr-FR",
+    "de": "de-DE",
+    "zh": "zh-CN",
+    "ko": "ko-KR",
+    "ja": "ja-JP",
+    "vi": "vi-VN"
 }
 
 # gTTS fallback language map
 GTTS_LANG_MAP = {
     "en": "en", "hi": "hi", "ta": "ta",
     "te": "te", "ml": "ml", "kn": "kn",
+    "fr": "fr", "de": "de", "zh": "zh-CN",
+    "ko": "ko", "ja": "ja", "vi": "vi"
 }
 
 
@@ -525,9 +539,13 @@ async def tts_sarvam(text: str, lang_code: str) -> bytes:
         "enable_preprocessing": True, # handles numbers, dates, abbreviations correctly
     }
 
+    # headers = {
+    #     "api-subscription-key": api_key,
+    #     "Content-Type": "application/json",
+    # }
     headers = {
-        "api-subscription-key": api_key,
-        "Content-Type": "application/json",
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
     }
 
     async with httpx.AsyncClient(timeout=30.0) as client:
