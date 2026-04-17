@@ -10,7 +10,7 @@ const features = [
     icon: Mic,
     color: 'bg-teal-50 text-teal-600',
     title: 'Voice First',
-    desc: 'Speak symptoms in Tamil or English. No typing required. Perfect for rural patients.',
+    desc: 'Speak symptoms in your OWN LANGUAGE. No typing required. Perfect for rural patients.',
   },
   {
     icon: Shield,
@@ -39,8 +39,8 @@ const features = [
   {
     icon: Globe,
     color: 'bg-orange-50 text-orange-500',
-    title: 'Bilingual AI',
-    desc: 'Fully conversational in both Tamil (தமிழ்) and English for maximum accessibility.',
+    title: 'Multilingual AI',
+    desc: 'Fully conversational in both multiple languages for maximum accessibility.',
   },
 ]
 
@@ -51,7 +51,7 @@ const specialists = [
 ]
 
 const steps = [
-  { num: '01', title: 'Speak Your Symptoms', desc: 'Use voice or text in Tamil or English' },
+  { num: '01', title: 'Speak Your Symptoms', desc: 'Use voice or text in your language' },
   { num: '02', title: 'AI Asks Follow-ups', desc: 'Intelligent questions to understand your condition' },
   { num: '03', title: 'Get Specialist Match', desc: 'AI recommends the right doctor for you' },
   { num: '04', title: 'Find & Visit Hospital', desc: 'Navigate to the nearest appropriate clinic' },
@@ -74,7 +74,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-teal-700/50 border border-teal-500/30 rounded-full px-4 py-1.5 text-sm text-teal-200 mb-8">
               <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse" />
-              TN Impact Hackathon 2025 – Healthcare AI
+              Healthcare AI - AI that understands your health
             </div>
 
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
@@ -83,12 +83,12 @@ export default function Home() {
             </h1>
 
             <p className="text-xl md:text-2xl text-teal-100 mb-4 font-body">
-              Speak symptoms in <strong>Tamil or English</strong>.<br />
+              Speak symptoms in <strong>your language</strong>.<br />
               AI listens, asks follow-ups, recommends the right specialist.
             </p>
 
             <p className="text-lg text-slate-300 font-mono mb-10">
-              உங்கள் அறிகுறிகளை தமிழில் சொல்லுங்கள் — AI புரிந்துகொள்ளும்.
+              Your Personal Health Assistant
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -136,7 +136,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <div className="text-center mb-14">
           <h2 className="font-display text-4xl font-bold text-slate-800 mb-4">
-            Built for Rural Tamil Nadu
+            Built for Rural India
           </h2>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
             Bridging the healthcare access gap with AI that understands local languages and realities.
@@ -214,7 +214,7 @@ export default function Home() {
             Don't Wait. Get Guidance Now.
           </h2>
           <p className="text-teal-100 text-lg mb-8">
-            Free, anonymous, available in Tamil and English. No appointment needed.
+            Free, anonymous, available in multiple languages. No appointment needed.
           </p>
           <Link
             to="/checker"
@@ -232,7 +232,6 @@ export default function Home() {
         <p className="mb-1">
           <strong className="text-white">VaidyaAI</strong> – Multilingual AI Health Assistant
         </p>
-        <p>Built for TN Impact Hackathon 2025 · Rānipet, Tamil Nadu</p>
         <p className="mt-2 text-xs text-slate-600">
           ⚠ This is a triage assistant only. Not a substitute for professional medical advice.
         </p>
